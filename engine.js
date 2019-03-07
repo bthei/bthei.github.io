@@ -672,6 +672,16 @@ function mediaExpander(pageDOM,mobile,popoutVideo){
 			if(o.attr("aud-disable")=="true"){$(".player",o).addClass("disabled");}
 		},10);
 	});
+	
+	//
+	window.addEventListener("play", function(evt)
+	{
+   		if(window.$_currentlyPlaying && window.$_currentlyPlaying != evt.target)
+    	{
+        	window.$_currentlyPlaying.pause();
+    	} 
+  		window.$_currentlyPlaying = evt.target;
+	}, true);
 
 	// Add video embeds
 	$.each($(".video",pageDOM),function(index,object){
